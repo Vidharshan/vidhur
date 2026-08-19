@@ -3,10 +3,6 @@ n8n.vidharshana.dev {
         header_up Connection *
         header_up Upgrade *
     }
-    transport http {
-        read_timeout 300s
-        write_timeout 300s
-    }
 }
 
 omniroute.vidharshana.dev {
@@ -20,10 +16,6 @@ hermes.vidharshana.dev {
     reverse_proxy http://hermes:8765 {
         header_up X-Real-IP {http.request.remote}
         header_up X-Forwarded-For {http.request.remote}
-    }
-    transport http {
-        read_timeout 600s
-        write_timeout 600s
     }
 }
 
@@ -64,7 +56,8 @@ a:hover { text-decoration: underline; }
 </body>
 </html>
 EOF
-}1~scout.vidharshan.dev {
+}
+scout.vidharshan.dev {
     reverse_proxy http://scout:3000 {
         header_up X-Real-IP {http.request.remote}
         header_up X-Forwarded-For {http.request.remote}
