@@ -1,0 +1,119 @@
+n8n.vidharshana.dev {
+    reverse_proxy http://n8n:5678 {
+        header_up Connection *
+        header_up Upgrade *
+    }
+    transport http {
+        read_timeout 300s
+        write_timeout 300s
+    }
+}
+
+omniroute.vidharshana.dev {
+    reverse_proxy http://omniroute:8765 {
+        header_up X-Real-IP {http.request.remote}
+        header_up X-Forwarded-For {http.request.remote}
+    }
+}
+
+hermes.vidharshana.dev {
+    reverse_proxy http://hermes:8765 {
+        header_up X-Real-IP {http.request.remote}
+        header_up X-Forwarded-For {http.request.remote}
+    }
+    transport http {
+        read_timeout 600s
+        write_timeout 600s
+    }
+}
+
+scout.vidharshan.dev {
+    reverse_proxy http://scout:3000 {
+        header_up X-Real-IP {http.request.remote}
+        header_up X-Forwarded-For {http.request.remote}
+    }
+}
+
+portfolio.vidharshan.dev {
+    respond <<EOF
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vidharshan - Developer</title>
+<style>
+body { font-family: Arial; margin: 40px; background: #f5f5f5; }
+.container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; }
+h1 { color: #333; }
+a { color: #0066cc; text-decoration: none; margin: 10px 0; display: block; }
+a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🚀 Vidharshan</h1>
+<p>Developer | Builder | AI Engineer</p>
+<hr>
+<h2>Projects</h2>
+<a href="https://hermes.vidharshan.dev">→ Hermes Agent</a>
+<a href="https://scout.vidharshan.dev">→ Scout (Job Search)</a>
+<a href="https://n8n.vidharshan.dev">→ n8n Workflows</a>
+<a href="https://annamiyarkai.com">→ Annam Iyarkai (Ecommerce)</a>
+<hr>
+<p>Building AI agents & automation tools</p>
+</div>
+</body>
+</html>
+EOF
+}1~scout.vidharshan.dev {
+    reverse_proxy http://scout:3000 {
+        header_up X-Real-IP {http.request.remote}
+        header_up X-Forwarded-For {http.request.remote}
+    }
+}
+
+portfolio.vidharshan.dev {
+    respond <<EOF
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vidharshan - Developer</title>
+<style>
+body { font-family: Arial; margin: 40px; background: #f5f5f5; }
+.container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; }
+h1 { color: #333; }
+a { color: #0066cc; text-decoration: none; margin: 10px 0; display: block; }
+a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🚀 Vidharshan</h1>
+<p>Developer | Builder | AI Engineer</p>
+<hr>
+<h2>Projects</h2>
+<a href="https://hermes.vidharshana.dev">→ Hermes Agent</a>
+<a href="https://scout.vidharshana.dev">→ Scout (Job Search)</a>
+<a href="https://n8n.vidharshana.dev">→ n8n Workflows</a>
+<a href="https://annamiyarkai.com">→ Annam Iyarkai (Ecommerce)</a>
+<hr>
+<p>Building AI agents & automation tools</p>
+</div>
+</body>
+</html>
+EOF
+}
+
+
+dashboard.vidharshana.dev {
+    respond <<EOF
+<!DOCTYPE html>
+<html>
+<head><title>Vidhur Agent Stack Dashboard</title></head>
+<body>
+<h1>🤖 Vidhur Agent Stack</h1>
+<p><a href="https://n8n.vidharshana.dev">→ n8n</a></p>
+<p><a href="https://hermes.vidharshana.dev">→ Hermes</a></p>
+</body>
+</html>
+EOF
+}
